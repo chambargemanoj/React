@@ -1,25 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 const headcolor = {
-  color: "red",
-  fontSize: "20px",
-  border: "1px solid black"
+  color: "Red"
 };
-headcolor.color = "green";
-const img1 =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMIarETVRyn7MITVFuxqkbDBp1ykjs4PrH6bFDg48tYIZq-XTf&usqp=CAU";
+var greeting;
+const date = new Date();
+const hour = date.getHours();
+if (hour < 12) {
+  greeting = "Good morning";
+  headcolor.color = "Red";
+} else if (hour > 12 && hour < 18) {
+  greeting = "Good afternoon";
+  headcolor.color = "Green";
+} else if (hour > 18 && hour < 24) {
+  greeting = "Good evening";
+  headcolor.color = "Blue";
+}
+
 ReactDOM.render(
-  <div>
-    <h1 style={headcolor}> My favourite indian food </h1>
-    <div>
-      <img className="food-img" src={img1} alt="Idli" />
-      <img
-        className="food-img"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ_FeNHjZ0C05WHVIvlOfNR_cE2zKcBdP55rA8VzkLHfT9XlSlC&usqp=CAU"
-        alt="sweet"
-      />
-    </div>
-  </div>,
+  <h1 style={headcolor}> {greeting} </h1>,
   document.getElementById("root")
 );
